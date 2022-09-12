@@ -1,0 +1,83 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: MySQL
+  version: 8.0.30
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+  - title: Overview
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /mysql_introduction.html
+      output: web, pdf
+
+    - title: Environment 설정
+      url: /mysql_environment.html
+      output: web, pdf
+
+  - title: MySQL Basic
+    output: web, pdf
+    folderitems:
+
+    - title: terminology & 기본운영
+      url: /mysql_basic-operation.html
+      output: web, pdf
+
+    - title: 데이터모델링 기본
+      url: /mysql_basic-data-modeling.html
+      output: web, pdf
+
+    - title: MySQL Utility
+      url: /mysql_utility.html
+      output: web, pdf
+
+  - title: SQL
+    output: web, pdf
+    folderitems:
+
+    - title: SQL 기본
+      url: /mysql_basic-sql.html
+      output: web, pdf
+
+    - title: SQL 고급(1)
+      url: /mysql_advanced-sql-part1.html
+      output: web, pdf
+
+    - title: SQL 고급(2)
+      url: /mysql_advanced-sql-part2.html
+      output: web, pdf
+
+  - title: MySQL Detail
+    output: web, pdf
+    folderitems:
+
+    - title: Table & View
+      url: /mysql_table-view.html
+      output: web, pdf
+
+    - title: Index
+      url: /mysql_index.html
+      output: web, pdf
+
+    - title: Database Modeling(특강)
+      url: /mysql_database-modeling.html
+      output: web, pdf
+
+
+# Copyright 2021 Google LLC

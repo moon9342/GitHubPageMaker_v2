@@ -1,0 +1,70 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  items:
+    - title: About
+      url: /about_blog.html
+#    - title: GitHub
+#      external_url: https://github.com/tomjoht/documentation-theme-jekyll
+#    - title: News
+#      url: /news
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
+    - title: Front End
+      folderitems:
+        - title: ECMAScript 2015(ES6)
+          url: /ecmascript_introduction.html
+#          external_url: https://talk.jekyllrb.com
+        - title: React
+          external_url: http://jekyllrb.com/docs/home/
+        - title: Angular
+          external_url: http://stackoverflow.com/questions/tagged/jekyll
+        - title: Vue
+          external_url: http://idratherbewriting.com/category-jekyll/
+        - title: TypeScript
+          external_url: http://idratherbewriting.com/category-jekyll/
+
+    - title: Back End
+      folderitems:
+        - title: Java
+          url: /mydoc_introduction.html
+        - title: Java Servlet
+          url: /p1_landing_page.html
+        - title: Spring Framework
+          url: /p2_landing_pageb.html
+        - title: MySQL
+          url: /mysql_introduction.html
+        - title: Docker
+          url: /p2_landing_paged.html
+        - title: Kubernetes
+          url: /p2_landing_pagee.html
+
+    - title: Data Science
+      folderitems:
+        - title: Python
+          url: /mydoc_introduction.html
+        - title: NumPy
+          url: /p1_landing_page.html
+        - title: Pandas
+          url: /p2_landing_page.html
+        - title: Visualization
+          url: /p2_landing_page.html
+        - title: Data Analysis
+          url: /p2_landing_page.html
+        - title: Machine Learning
+          url: /p2_landing_page.html
+        - title: Deep Learning
+          url: /p2_landing_page.html
+
+    - title: Miscellaneous
+      folderitems:
+        - title: Python
+          url: /mydoc_introduction.html
+        - title: NumPy
+          url: /p1_landing_page.html
+
+# Copyright 2021 Google LLC
