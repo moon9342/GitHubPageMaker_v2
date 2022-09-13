@@ -1,0 +1,88 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Python
+  version:
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+  - title: Overview
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /python_introduction.html
+      output: web, pdf
+
+    - title: Environment 설정
+      url: /python_environment.html
+      output: web, pdf
+
+  - title: Python Basic
+    output: web, pdf
+    folderitems:
+
+    - title: variable & data type
+      url: /python_data-type.html
+      output: web, pdf
+
+    - title: control statement
+      url: /python_control-statement.html
+      output: web, pdf
+
+    - title: python function
+      url: /python_function.html
+      output: web, pdf
+
+
+  - title: Python Advanced
+    output: web, pdf
+    folderitems:
+
+    - title: python 객체지향
+      url: /python_oop.html
+      output: web, pdf
+
+    - title: magic method
+      url: /python_magic-method.html
+      output: web, pdf
+
+    - title: first class citizen
+      url: /python_first-class.html
+      output: web, pdf
+
+    - title: closure
+      url: /python_closure.html
+      output: web, pdf
+
+    - title: decorator
+      url: /python_decorator.html
+      output: web, pdf
+
+    - title: generator
+      url: /python_generator.html
+      output: web, pdf
+
+    - title: module
+      url: /python_module.html
+      output: web, pdf
+
+    - title: exception & file
+      url: /python_exception.html
+      output: web, pdf
+
+
+# Copyright 2021 Google LLC
