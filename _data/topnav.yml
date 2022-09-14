@@ -48,9 +48,9 @@ topnav_dropdowns:
         - title: Python
           url: /python_introduction.html
         - title: NumPy
-          url: /p1_landing_page.html
+          url: /numpy_introduction.html
         - title: Pandas
-          url: /p2_landing_page.html
+          url: /pandas_introduction.html
         - title: Visualization
           url: /p2_landing_page.html
         - title: Data Analysis

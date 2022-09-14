@@ -1,0 +1,75 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: NumPy
+  version:
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+  - title: Overview
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /numpy_introduction.html
+      output: web, pdf
+
+  - title: NumPy Basic
+    output: web, pdf
+    folderitems:
+
+    - title: ndarray 생성과 dtype
+      url: /numpy_ndarray-create.html
+      output: web, pdf
+
+    - title: ndarray의 주요 속성
+      url: /numpy_ndarray-attribute.html
+      output: web, pdf
+
+    - title: ndarray를 생성하는 다양한 생성함수
+      url: /numpy_ndarray-create-other.html
+      output: web, pdf
+
+    - title: 랜덤 기반의 함수
+      url: /numpy_ndarray-create-random.html
+      output: web, pdf
+
+    - title: ndarray shape 변경
+      url: /numpy_ndarray-shape.html
+      output: web, pdf
+
+    - title: ndarray indexing & slicing
+      url: /numpy_ndarray-indexing.html
+      output: web, pdf
+
+    - title: ndarray의 사칙연산과 행렬곱연산
+      url: /numpy_ndarray-operation.html
+      output: web, pdf
+
+    - title: ndarray의 전치행렬과 iterator
+      url: /numpy_ndarray-iterator.html
+      output: web, pdf
+
+    - title: ndarray의 boolean mask의 활용과 집계함수
+      url: /numpy_ndarray-aggregation.html
+      output: web, pdf
+
+    - title: ndarray의 정렬, 연결, 삭제
+      url: /numpy_ndarray-manipulation.html
+      output: web, pdf
+
+
+# Copyright 2021 Google LLC

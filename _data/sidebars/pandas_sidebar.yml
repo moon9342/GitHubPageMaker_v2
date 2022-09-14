@@ -1,0 +1,55 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Pandas
+  version:
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+  - title: Overview
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /pandas_introduction.html
+      output: web, pdf
+
+  - title: Pandas Basic
+    output: web, pdf
+    folderitems:
+
+    - title: Series
+      url: /pandas_series.html
+      output: web, pdf
+
+    - title: DataFrame
+      url: /pandas_dataframe.html
+      output: web, pdf
+
+    - title: DataFrame indexing
+      url: /pandas_dataframe-indexing.html
+      output: web, pdf
+
+    - title: DataFrame functions
+      url: /pandas_dataframe-functions.html
+      output: web, pdf
+
+    - title: Data pre-processing
+      url: /pandas_data-preprocessing.html
+      output: web, pdf
+
+
+# Copyright 2021 Google LLC
