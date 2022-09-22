@@ -91,6 +91,10 @@ entries:
       url: /ecmascript_built-in-object.html
       output: web, pdf
 
+    - title: module
+      url: /ecmascript_module.html
+      output: web, pdf
+
     - title: closure
       url: /ecmascript_closure.html
       output: web, pdf
