@@ -47,8 +47,16 @@ entries:
       url: /vue_component-comm.html
       output: web, pdf
 
-    - title: primitive value vs. object
-      url: /ecmascript_primitive-object.html
+    - title: Vue Routing
+      url: /vue_routing.html
+      output: web, pdf
+
+    - title: Vue HTTP 통신
+      url: /vue_http.html
+      output: web, pdf
+
+    - title: Vue Template
+      url: /vue_template.html
       output: web, pdf
 
   - title: ESCMAScript Function Basic
