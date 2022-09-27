@@ -59,12 +59,16 @@ entries:
       url: /vue_template.html
       output: web, pdf
 
-  - title: ESCMAScript Function Basic
+    - title: Single File Component
+      url: /vue_single-file-component.html
+      output: web, pdf
+
+  - title: Vue To-Do List 구현
     output: web, pdf
     folderitems:
 
-    - title: function 기본
-      url: /ecmascript_function-basic.html
+    - title: to-do-app 소개
+      url: /vue_to-do-app-introduction.html
       output: web, pdf
 
     - title: scope
