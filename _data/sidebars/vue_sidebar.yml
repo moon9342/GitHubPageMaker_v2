@@ -59,6 +59,10 @@ entries:
       url: /vue_template.html
       output: web, pdf
 
+    - title: 영화 BoxOffice 실습예제 구현
+      url: /vue_box-office.html
+      output: web, pdf
+
     - title: Single File Component
       url: /vue_single-file-component.html
       output: web, pdf

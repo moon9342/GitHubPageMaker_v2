@@ -56,6 +56,27 @@ type="danger"
 content="**npm install vue-cli -global**"
 %}
 
+만약 네트워크가 연결되어 있지 않다면 파일을 복사한 후 다음의 명령어로 prefix를 바꿔줘서 사용해야 합니다. 
+
+npm -g install 로 설치하는 npm 모듈들은 기본적으로 C:\Users\사용자\AppData\Roaming\npm\node_modules 아래에 설치된다. 
+용량은 그리 크지 않겠지만 괜히 여기에 뭐 설치되는게 싫어서 다른 곳으로 설치를 옮기고 싶다면 다음과 같이 하면 됩니다.
+
+npm config 명령을 사용해서 설치 위치를 변경할 수 있다.
+
+적당한 위치에 폴더를 하나 생성한 후 복사한 npm 폴더의 압축을 풉니다. 
+
+{% include callout.html
+type="danger"
+content="**npm config set prefix 'c:/npm'**"
+%}
+
+{% include callout.html
+type="danger"
+content="**npm config set cache 'c:/npm-cache'**"
+%}
+
+전역으로 설치된 모듈의 실행 파일 역시 PREFIX 디렉토리에 생성되므로 해당 위치를 PATH 환경변수에 추가해주는 작업을 해주면 됩니다.
+
 설치가 잘 되었는지 `vue` 명령을 이용해 확인합니다.
 
 {% include callout.html
@@ -77,7 +98,8 @@ file='vue/vue45.png'
 
 2. 간단한 질문이 나오는데 적당히 입력하면 파일이 생성됩니다. 
 
-3. `npm install`을 이용하여 관련 라이브러리를 모두 다운로드 합니다. 
+3. `npm install`을 이용하여 관련 라이브러리를 모두 다운로드 합니다. 여기서 만약 다운로드가 안된다면 제공된 파일을 이용하여 압축을
+풉니다.
 
 4. 그러면 다음과 같은 구조가 생성됩니다.
 
@@ -98,7 +120,6 @@ file='vue/vue47.png'
 마지막으로 `npm run dev`를 실행하면 로컬 서버하나를 실행하고 브라우져를 실행시켜 어플리케이션을 실행합니다. 
 
 실행이 잘 되나요? 그럼 이제 간단한 프로젝트를 구현해 보도록 하죠.
-
 
 
 End.
