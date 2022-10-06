@@ -51,7 +51,7 @@ entries:
       url: /ecmascript_primitive-object.html
       output: web, pdf
 
-  - title: ESCMAScript Function Basic
+  - title: ESCMAScript Function
     output: web, pdf
     folderitems:
 
@@ -101,6 +101,14 @@ entries:
 
     - title: class
       url: /ecmascript_class.html
+      output: web, pdf
+
+    - title: asynchronous
+      url: /ecmascript_asynchronous.html
+      output: web, pdf
+
+    - title: ajax
+      url: /ecmascript_ajax.html
       output: web, pdf
 
     - title: array
