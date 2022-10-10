@@ -10,10 +10,13 @@ folder: vue
 
 영화진흥위원회 Open API와 KAKAO 이미지 검색 API를 이용하여 간단한 BoxOffice 순위를 검색하는
 웹앱을 구현해보도록 하겠습니다. 
+<br><br>
 
 우리예제는 `https://cors-anywhere.herokuapp.com/`를 이용한 proxy설정을 이용하기 때문에 같은 domain으로 여러번
-request를 보내게 되면 block됩니다. 그래서 live server 세팅을 변경해서 사용하는 포트번호를 다르게 변경해주면 block되지 않고
-사용할 수 있습니다. 
+request를 보내게 되면 block됩니다. 
+<br><br>
+
+그래서 live server 세팅을 변경해서 사용하는 포트번호를 다르게 변경해주면 block되지 않고 사용할 수 있습니다. 
 
 ~~~javascript
 

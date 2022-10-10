@@ -23,7 +23,7 @@ topnav_dropdowns:
           external_url: http://jekyllrb.com/docs/home/
         - title: Angular
           external_url: http://stackoverflow.com/questions/tagged/jekyll
-        - title: Vue
+        - title: Vue.js 2.x
           url: /vue_introduction.html
         - title: TypeScript
           external_url: http://idratherbewriting.com/category-jekyll/

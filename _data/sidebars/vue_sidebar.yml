@@ -2,22 +2,22 @@
 
 entries:
 - title: sidebar
-  product: Vue
+  product: Vue.js 2.x
   version:
   folders:
 
-  - title:
-    output: pdf
-    type: frontmatter
-    folderitems:
-    - title:
-      url: /titlepage.html
-      output: pdf
-      type: frontmatter
-    - title:
-      url: /tocpage.html
-      output: pdf
-      type: frontmatter
+#  - title:
+#    output: pdf
+#    type: frontmatter
+#    folderitems:
+#    - title:
+#      url: /titlepage.html
+#      output: pdf
+#      type: frontmatter
+#    - title:
+#      url: /tocpage.html
+#      output: pdf
+#      type: frontmatter
 
   - title: Overview
     output: web, pdf
@@ -67,60 +67,8 @@ entries:
       url: /vue_single-file-component.html
       output: web, pdf
 
-  - title: Vue To-Do List 구현
-    output: web, pdf
-    folderitems:
-
-    - title: to-do-app 소개
-      url: /vue_to-do-app-introduction.html
-      output: web, pdf
-
-    - title: scope
-      url: /ecmascript_scope.html
-      output: web, pdf
-
-    - title: property attribute
-      url: /ecmascript_property-attribute.html
-      output: web, pdf
-
-  - title: ESCMAScript Advanced
-    output: web, pdf
-    folderitems:
-
-    - title: 생성자 함수
-      url: /ecmascript_constructor.html
-      output: web, pdf
-
-    - title: 일급 객체
-      url: /ecmascript_first-classes-citizen.html
-      output: web, pdf
-
-    - title: prototype
-      url: /ecmascript_prototype.html
-      output: web, pdf
-
-    - title: strict mode
-      url: /ecmascript_strict-mode.html
-      output: web, pdf
-
-    - title: built-in objects
-      url: /ecmascript_built-in-object.html
-      output: web, pdf
-
-    - title: module
-      url: /ecmascript_module.html
-      output: web, pdf
-
-    - title: closure
-      url: /ecmascript_closure.html
-      output: web, pdf
-
-    - title: class
-      url: /ecmascript_class.html
-      output: web, pdf
-
-    - title: array
-      url: /ecmascript_array.html
+    - title: to-do-app 구현
+      url: /vue_to-do-app.html
       output: web, pdf
 
 

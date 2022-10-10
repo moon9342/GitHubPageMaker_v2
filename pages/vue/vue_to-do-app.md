@@ -1,8 +1,8 @@
 ---
-title: Vue to-do-app introduction
+title: Vue to-do-app
 sidebar: vue_sidebar
 summary: ""
-permalink: vue_to-do-app-introduction.html
+permalink: vue_to-do-app.html
 folder: vue
 ---
 
