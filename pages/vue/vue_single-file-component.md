@@ -63,7 +63,7 @@ Vue CLI를 설치하기 위해 다음의 명령을 실행합니다. Node.js가 �
 
 {% include callout.html
 type="danger"
-content="**npm install vue-cli -global**"
+content="**npm install vue-cli --location=global**"
 %}
 <br>
 
@@ -115,8 +115,9 @@ file='vue/vue45.png'
 다음과 같은 순서로 프로젝트를 구성합니다. 
 <br><br>
 
-1. 뷰 프로젝트를 구성할 빈 폴더를 하나 생성하고 빈 폴더에서 `vue init webpack-simple`를 입력합니다.
-2. 간단한 질문이 나오는데 적당히 입력하면 파일이 생성됩니다. 
+1. 뷰 프로젝트를 구성할 빈 폴더를 하나 생성하고(우리는 `to-do app`을 만들것이기 때문에 
+바탕화면에 `vue-todo` 폴더를 생성) 폴더안에서 `vue init webpack-simple`를 실행합니다. 
+2. 간단한 질문들이 나오는데 적당히 입력하면 파일이 생성됩니다. 
 3. `npm install`을 이용하여 관련 라이브러리를 모두 다운로드 합니다. 여기서 만약 다운로드가 안된다면 제공된 파일을 이용하여 압축을
 풉니다.
 4. 그러면 다음과 같은 구조가 생성됩니다.

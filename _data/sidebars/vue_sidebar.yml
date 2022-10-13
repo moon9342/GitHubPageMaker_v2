@@ -67,7 +67,7 @@ entries:
       url: /vue_single-file-component.html
       output: web, pdf
 
-    - title: to-do-app 구현
+    - title: to-do app 구현
       url: /vue_to-do-app.html
       output: web, pdf
 
