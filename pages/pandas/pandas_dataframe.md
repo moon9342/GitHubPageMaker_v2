@@ -198,7 +198,7 @@ display(t_df)
 
 ## CSV 파일을 이용한 DataFrame 생성 (1)
 
-[실습 CSV 파일(student.csv)](/assets/downloads/student.zip){: target="_blank" }
+[실습 CSV 파일(student.csv)](https://drive.google.com/file/d/1orWprxHjoBwwvZrRUxOmW3tBjzBLZxT6/view?usp=sharing){: target="_blank" }
 
 ~~~python
 
@@ -228,7 +228,7 @@ display(df)
 
 ## CSV 파일을 이용한 DataFrame 생성 (2)
 
-[실습 CSV 파일(movies.csv)](/assets/downloads/movies.zip){: target="_blank" }
+[실습 CSV 파일(movies.csv)](https://drive.google.com/file/d/1fsGrDY2i3FLgrCc40BIQXzhWsq6jCKG-/view?usp=sharing){: target="_blank" }
 
 ~~~python
 
@@ -264,7 +264,7 @@ type="danger"
 content="**conda install pymysql**"
 %}
 
-[실습 SQL 파일(BookTableDump.zip)](/assets/downloads/BookTableDump.zip){: target="_blank" }
+[실습 SQL 파일(BookTableDump.zip)](https://drive.google.com/file/d/1zhibjEpn4dhB_W9ddqE-yfR3a0z7IaPo/view?usp=sharing){: target="_blank" }
 
 ~~~python
 
@@ -384,8 +384,6 @@ display(df)
 ## Open API(JSON)를 이용한 DataFrame 생성
 
 ~~~python
-
-# 결과를 JSON으로 return하는 open API를 이용한 DataFrame 생성
 
 # 결과를 JSON으로 return하는 open API를 이용한 DataFrame 생성
 

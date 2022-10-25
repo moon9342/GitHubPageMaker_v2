@@ -10,8 +10,11 @@ folder: python
 
 python 함수의 body에는 최소한 한 개 이상의 문장이 필요합니다. 만약 내용이 없는 함수를
 만들 경우 `pass` keyword를 사용해야 합니다.
+<br><br>
 
 함수명은 가독성을 높이기 위해 필요에 따라 밑줄로 구분 된 단어와 함께 소문자를 이용하는것을 원칙으로 합니다.
+(`Snake Case`)
+<br><br>
 
 Python의 함수는 내장함수와 사용자 정의 함수로 구분할 수 있습니다.
 
@@ -102,20 +105,22 @@ result2 = default_param(30, 40, False)
 
 ~~~
 
-### mutable vs immutable
+### call-by-value & call-by-reference
 
-함수의 입력인자가 list, dict 등인 경우 mutable 특징을 가집니다. 즉, 함수내에서
-해당 인자의 내용을 변경하면 원래 데이터인 list, dict의 내용이 변경됩니다. 이런 특징을
-`mutable`이라고 합니다.
+함수의 입력인자가 list, dict 등인 경우 함수내에서 해당 인자의 내용을 변경하면 
+원래 데이터인 list, dict의 내용이 변경됩니다. 이런 특징을 
+`call-by-reference`라고 합니다.
 <br><br>
 
-반대로 숫자, 문자열, tuple 등은 immutable 특징을 가집니다. 함수내에서
-해당 인자의 내용을 변경하여도 원래의 데이터에는 변형이 이루어지지 않음을
-의미합니다. 이런 특징을 `immutable`이라고 합니다.
+반대로 숫자, 문자열, tuple 등은 함수내에서 해당 인자의 내용을 변경하여도 원래의 
+데이터에는 변형이 이루어지지 않습니다. 이런 특징을 `call-by-value`이라고 합니다.
+<br><br>
+
+`mutable`과 `immutable`이라는 표현이 있는데 이는 메모리에 있는 값이 변경이 될 수 있는가
+그렇지 않은가를 나타내는 용어입니다. 
 
 ~~~python
 
-# mutable vs. immutable
 # call-by-value & call-by-reference
 
 def my_func(tmp_number, tmp_list):
@@ -145,6 +150,8 @@ def my_func(x):
     global tmp     # tmp를 global scope에서 찾는다.
     tmp += x       # 만약 tmp를 global로 선언하지 않았다면
                    # local variable ( 초기화 x -> error )
+                   # 즉, global scope와 local scope가 자동으로 연결되지 않는다.
+                   # JavaScript같은 함수형 언어와 다른점이라고 할 수 있다.
     return tmp
 
 
@@ -258,12 +265,11 @@ print(str)
 ## lambda
 
 `lambda`(람다)는 한 줄로 함수를 정의하는 방법입니다. 단, 함수의 이름이
-명시되지 않기 때문에 anonymous function이라고도 합니다.
+명시되지 않기 때문에 `anonymous function`이라고도 합니다.
 <br><br>
 
 함수명이 없기 때문에 일반적으로 람다식(lambda expression)은 변수에 할당되어서
-사용됩니다. 이런 특징을 `first class`라고 하는데 이는 뒤쪽 강의에서 다시 설명하도록
-하겠습니다.
+사용됩니다. 
 <br><br>
 
 `lambda`는 입력 값을 대체 표현식으로 대체해주는 역할을 합니다. 따라서 일반적인 함수와는

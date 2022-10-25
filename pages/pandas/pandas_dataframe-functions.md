@@ -22,7 +22,7 @@ folder: pandas
 아래의 링크를 통해 예제 `CSV`파일을 다운로드 받아서 사용합니다.
 <br><br>
 
-[실습 CSV 파일(auto-mpg.csv)](/assets/downloads/auto-mpg.zip){: target="_blank" }
+[실습 CSV 파일(auto-mpg.csv)](https://drive.google.com/file/d/1xPEIHUHMr9jIbbiffrO_UPTJMFJrXcfB/view?usp=sharing){: target="_blank" }
 
 ~~~python
 

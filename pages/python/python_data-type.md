@@ -6,15 +6,16 @@ permalink: python_data-type.html
 folder: python
 ---
 
-## jupyter notebook 단축키
+## Jupyter Notebook 단축키
 
-data type을 알아보기 이전에 jupyter notebook의 단축키부터 알아보도록 하죠. 
+data type을 알아보기 이전에 `Jupyter Notebook`의 단축키부터 알아보도록 하죠. 
 <br><br>
 
 jupyter notebook을 PyCharm이 아닌 Web Application으로 사용할 때 마우스로 메뉴를 이용해도 되지만 단축키를 이용하는게
 훨씬 편합니다. 아래내용은 기억해두면 사용하기 편한 단축키에 대한 설명입니다.
 
 ~~~javascript
+
 Shift-Enter : run cell, select below
 Ctrl-Enter : run cell
 Alt-Enter : run cell, insert below
@@ -28,6 +29,7 @@ D, D : delete selected cell
 Z : undo last cell deletion
 L : toggle line number
 O : toggle output
+
 ~~~
 
 ---
@@ -60,6 +62,7 @@ print(keyword.kwlist)
 
 a = 100
 print("생성된 a의 값은 : ", a)
+
 del a
 print("삭제된 a의 값은 : ", a)
 
@@ -71,6 +74,7 @@ print("삭제된 a의 값은 : ", a)
  'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 
  'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 
  'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+ 
 생성된 a의 값은 :  100
 ---------------------------------------------------------------------------
 NameError                                 Traceback (most recent call last)
@@ -90,12 +94,12 @@ NameError: name 'a' is not defined
 Python의 built-in data type은 다음과 같습니다.
 <br><br>
 
-* Numeric
-* Sequence
-* Text Sequence
-* Mapping
-* Set
-* Bool
+* `Numeric`
+* `Sequence`
+* `Text Sequence`
+* `Mapping`
+* `Set`
+* `Bool`
 <br><br>
 
 각각의 데이터 타입에 대해서 하나하나 알아보도록 하겠습니다.

@@ -587,7 +587,7 @@ file='pandas-time-series.png'
 다운로드 한 후 이용해보도록 하죠.
 <br><br>
 
-[실습 CSV 파일(stock-data.csv)](/assets/downloads/stock-data.zip){: target="_blank" }
+[실습 CSV 파일(stock-data.csv)](https://drive.google.com/file/d/1CGQ_iIFLNsmcZG-_o-uaQjfLja8gTNfe/view?usp=sharing){: target="_blank" }
 
 ~~~python
 

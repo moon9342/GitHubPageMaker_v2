@@ -84,5 +84,40 @@ entries:
       url: /python_exception.html
       output: web, pdf
 
+  - title: Python Django
+    output: web, pdf
+    folderitems:
+
+      - title: Django Introduction
+        url: /python_django-introduction.html
+        output: web, pdf
+
+      - title: Poll Project 개발(1)
+        url: /python_django-poll-1.html
+        output: web, pdf
+
+      - title: Poll Project 개발(2)
+        url: /python_django-poll-2.html
+        output: web, pdf
+
+      - title: Poll Project 개발(3)
+        url: /python_django-poll-3.html
+        output: web, pdf
+
+      - title: Poll Project 개발(4)
+        url: /python_django-poll-4.html
+        output: web, pdf
+
+      - title: Poll Project 개발(5)
+        url: /python_django-poll-5.html
+        output: web, pdf
+
+      - title: LectureSample Project 개발(1)
+        url: /python_django-lecture-sample-1.html
+        output: web, pdf
+
+      - title: LectureSample Project 개발(2)
+        url: /python_django-lecture-sample-2.html
+        output: web, pdf
 
 # Copyright 2021 Google LLC

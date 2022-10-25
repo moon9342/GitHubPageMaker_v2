@@ -441,7 +441,7 @@ class Employee(object):
     def get_pay(self):
         return '현재 "{}"의 연봉은 "{}"입니다.'.format(self.u_name, self.u_pay)
 
-    # 스태틱 메소드 데코레이터를 사용하여 클래스 메소드 정의
+    # 스태틱 메소드 데코레이터를 사용하여 스태틱 메소드 정의
     @staticmethod
     def is_valid(u_pay):
         if u_pay < 0:
@@ -572,8 +572,39 @@ marine_1 = Marine('100', '100')
 marine_1.show_status()
 
 # Student class가 어떠한 구조를 가지고 있나를 확인
-print(help(Marine))
+help(Marine)
 
+===============================================
+
+직업: Marine
+공격력: 100
+생명력: 100
+Help on class Marine in module __main__:
+
+class Marine(Unit)
+ |  Marine(damage, life)
+ |  
+ |  Method resolution order:
+ |      Marine
+ |      Unit
+ |      builtins.object
+ |  
+ |  Methods inherited from Unit:
+ |  
+ |  __init__(self, damage, life)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  show_status(self)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from Unit:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ 
 ~~~
 
 인스턴스 생성시에 무조건 호출되어야 하는 `__init__()` method도 자신의 네임스페이스에서
@@ -661,133 +692,16 @@ marine_1 = Marine('100', '100',0,0)
 
 marine_1.show_status()
 
+================================
+
+직업: Marine
+공격력: 100
+생명력: 100
+공격력 업그레이드: 0
+방어력 업그레이드: 0
+
 ~~~   
 
-기본적인 내용에 대해서는 알아봤으니 이번에는 간단한 시나리오를 가지고 클래스를 디자인해보도록
-하겠습니다.
-<br><br>
-
-Marine, Medic, DropShip 3 종류의 Unit을 사용할 것이고 4명의 Marine을 생성하고 2명의 Medic,
-1개의 DropShip을 생성한 후 DropShip에 6명을 태워서 특정 지점에 공격하러 가는 내용으로
-class를 정의하고 실행해보도록 하겠습니다.
-
-~~~python
-
-# 간단한 예제
-
-class Unit(object):
-    def __init__(self, damage, life):
-        self.utype = self.__class__.__name__
-        self.damage = damage
-        self.life = life
-        
-    def show_status(self):
-        print('직업: {}'.format(self.utype))
-        print('공격력: {}'.format(self.damage))
-        print('생명력: {}'.format(self.life))
-
-    def attack(self):
-        pass        
-        
-
-class Marine(Unit):
-    def __init__(self, damage, life, offense_upgrade, defense_upgrade):
-        super(Marine, self).__init__(damage, life)
-        self.offense_upgrade = offense_upgrade
-        self.defense_upgrade = defense_upgrade
-        
-    def show_status(self):
-        super(Marine, self).show_status()
-        print('공격력 업그레이드: {}'.format(self.offense_upgrade))
-        print('방어력 업그레이드: {}'.format(self.defense_upgrade))
-
-    def attack(self):
-        print('마린이 공격합니다. 땅땅!!')
-
-    def stimpack(self):
-        if self.life > 20:
-            self.damage = self.damage * 1.5
-            self.life = self.life - 10
-            print('마린이 Stimpack을 사용합니다. 칙!!')    
-        else:
-            print('체력이 낮아 Stimpack을 사용할 수 없습니다.')    
-
-
-class Medic(Unit):
-    def __init__(self, damage, life, defense_upgrade):
-        super(Medic, self).__init__(damage, life)
-        self.defense_upgrade = defense_upgrade
-
-    def show_status(self):
-        super(Medic, self).show_status()
-        print('방어력 업그레이드: {}'.format(self.defense_upgrade))
-
-    def attack(self):
-        print('메딕이 치료합니다. 힐힐!!')
-
-
-class DropShip(Unit):
-    def __init__(self, damage, life, defense_upgrade):
-        super(DropShip, self).__init__(damage, life)
-        self.defense_upgrade = defense_upgrade
-        self.unit_arr = []
-
-    def show_status(self):
-        super(DropShip, self).show_status()
-        print('방어력 업그레이드: {}'.format(self.defense_upgrade))
-
-    def attack(self):
-        print('목표지점으로 이동합니다. 쓩!!')
-
-    def board(self,unit_arr):
-        self.unit_arr = unit_arr
-        print('부대를 태웠습니다.')
-
-    def drop(self):
-        print('모든 Unit이 DropShip에서 내립니다.')
-        return self.unit_arr
-    
-
-# Marine 생성
-
-marine_1 = Marine(10,100,0,0)
-marine_2 = Marine(10,100,0,0)
-marine_3 = Marine(10,100,0,0)
-marine_4 = Marine(10,100,0,0)
-
-# Medic 생성
-medic_1 = Medic(0,100,0)
-medic_2 = Medic(0,100,0)
-
-# 병력을 list안에 모은다.
-troop = list()
-troop.append(marine_1)
-troop.append(marine_2)
-troop.append(marine_3)
-troop.append(marine_4)
-troop.append(medic_1)
-troop.append(medic_2)
-
-
-# DropShip 생성
-dropship = DropShip(0,50,0)
-
-# DropShip에 부대원을 태운다.
-dropship.board(troop)
-
-# 공격지점으로 이동
-dropship.attack()
-
-# 공격지점에서 부대원들 내리기
-troop = dropship.drop()
-
-# 부대원들 공격
-for unit in troop:
-    if isinstance(unit,Marine):
-        unit.stimpack()
-    unit.attack()
-    
-~~~   
 
 End.
 
