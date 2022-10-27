@@ -59,6 +59,8 @@ topnav_dropdowns:
           url: /p2_landing_page.html
         - title: Deep Learning
           url: /p2_landing_page.html
+        - title: Object Detection
+          url: /object_detection_tensorflow_hub.html
 
     - title: Miscellaneous
       folderitems:

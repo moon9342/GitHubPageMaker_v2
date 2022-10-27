@@ -74,8 +74,8 @@ Data Analysis를 위해서 Python을 학습하고 사용할때는 `Jupyter Noteb
 * `conda update --all`
 * conda 가상 환경을 생성합니다.
 * `conda create  -n data_env python=3.8 openssl`
-* 현시점(2022-10-24)을 기준으로 nb_conda 설치를 위해서는 python버전이 `3.8`버전이어야 합니다. 3.9버전일 경우
-오류가 발생합니다.
+* nb_conda 설치를 위해서는 python버전이 `3.8`버전이어야 합니다. python버전이 3.9버전일 경우 nb_conda를 설치할 때 
+`-c conda-forge` 옵션을 주어야 합니다.
 * 가상환경으로 전환하기 위해서 다음의 코드를 실행
 * `conda activate data_env`
 * 필요한 주요 라이브러리를 설치하기 위해 다음과 같이 실행합니다.(이 부분은 해당 내용을 학습할 때 설치해도 됩니다.) 

@@ -1,0 +1,30 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Object Detection
+  version:
+  folders:
+
+  - title: Object Detection
+    output: web, pdf
+    folderitems:
+
+    - title: CUDA & cuDNN 설치
+      url: /object_detection_cuda-cudnn.html
+      output: web, pdf
+
+    - title: Tensorflow Hub
+      url: /object_detection_tensorflow_hub.html
+      output: web, pdf
+
+    - title: Tensorflow Object Detection API
+      url: /object_detection_tensorflow_api.html
+      output: web, pdf
+
+    - title: Darknet YOLO
+      url: /object_detection_darknet_yolo.html
+      output: web, pdf
+
+
+# Copyright 2021 Google LLC
