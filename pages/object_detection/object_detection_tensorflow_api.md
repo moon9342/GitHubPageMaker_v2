@@ -537,9 +537,11 @@ model {
 
 train_config: {
   # 현재 AWS 성능상 batch_size를 4로 설정해도 OOM 오류가 발생.
-  batch_size: 4
-  # 현재 AWS 성능상 사용으로 학습에 걸리는 시간이 1step당 0.6초가 걸림
-  # 200,000 step이면 약 33.3 시간이 걸리게 되니 step의 수를
+  batch_size: 1
+  # AWS 성능상 학습에 걸리는 시간이 1step당 0.6초가 걸림
+  # PC 성능상 학습에 걸리는 시간이 1step당 0.4초가 걸림
+  # Google Colab인 경우 학습에 걸리는 시간이 1step당 0.2초가 걸림
+  # AWS인 경우 200,000 step이면 약 33.3 시간이 걸리게 되니 step의 수를
   # 조절할 필요가 있음.
   num_steps: 200000
   optimizer {
@@ -725,7 +727,7 @@ python object_detection/model_main_tf2.py --pipeline_config_path=${PIPELINE_CONF
 약간 다른점이 있다는 것 염두해 두세요!!
 <br><br>
 
-[Tensorflow Object Detection API train example for Google Colab](https://drive.google.com/file/d/18l2k-ieZF_XrK1-V7ChMHkCiH1gzn1NP/view?usp=sharing){: target="_blank" }
+[Tensorflow Object Detection API train example for Google Colab](https://drive.google.com/file/d/1WfvK6Qjed6xsUBxnJ0H1-HghJi093SzO/view?usp=sharing){: target="_blank" }
 
 ---
 

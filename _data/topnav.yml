@@ -52,7 +52,7 @@ topnav_dropdowns:
         - title: Pandas
           url: /pandas_introduction.html
         - title: Visualization
-          url: /p2_landing_page.html
+          url: /matplotlib.html
         - title: Data Analysis
           url: /p2_landing_page.html
         - title: Machine Learning
@@ -61,6 +61,8 @@ topnav_dropdowns:
           url: /p2_landing_page.html
         - title: Object Detection
           url: /object_detection_tensorflow_hub.html
+        - title: Natural Language Processing
+          url: /nlp_introduction.html
 
     - title: Miscellaneous
       folderitems:

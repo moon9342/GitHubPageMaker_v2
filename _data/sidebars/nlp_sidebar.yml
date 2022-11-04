@@ -1,0 +1,26 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: NLP
+  version:
+  folders:
+
+  - title: Natural Language Processing
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /nlp_introduction.html
+      output: web, pdf
+
+    - title: IMDB Review 분류
+      url: /nlp_imdb-classification.html
+      output: web, pdf
+
+    - title: 한국어 감성 분류
+      url: /nlp_korean-classification.html
+      output: web, pdf
+
+
+# Copyright 2021 Google LLC

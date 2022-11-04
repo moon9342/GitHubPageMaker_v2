@@ -6,7 +6,7 @@ tags: [getting_started]
 summary: "블로그에 대한 간단한 소개입니다."
 sidebar: home_sidebar
 permalink: about_blog.html
-folder: miscellaneous
+folder: about
 ---
 <br>
 * 많은 데이터를 어떻게 하면 잘 정리할 수 있을까?

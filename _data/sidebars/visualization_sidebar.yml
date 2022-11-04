@@ -1,0 +1,27 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Visualization
+  version:
+  folders:
+
+  - title: Visualization
+    output: web, pdf
+    folderitems:
+
+    - title: matplotlib
+      url: /matplotlib.html
+      output: web, pdf
+
+    - title: seaborn
+      url: /seaborn.html
+      output: web, pdf
+
+    - title: folium
+      url: /folium.html
+      output: web, pdf
+
+
+
+# Copyright 2021 Google LLC
