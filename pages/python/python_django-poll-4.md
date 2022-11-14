@@ -83,7 +83,11 @@ URL을 `polls:vote`로 설정했습니다. polls:vote에서 polls는 namespace�
 <br><br>
 
 * `form`을 처리하는데 보안상의 issue를 해결하기 위해 `csrf_token` template tag를 사용했습니다. 
-CSRF(Cross Site Request Forgery) 공격은 특정 웹사이트에서 이미 인증받은 사용자를 이용하여 웹 사이트를 공격하는 방법입니다.
+CSRF(Cross Site Request Forgery)는 사이트 간 요청 위조를 의미하며 
+특정 웹사이트에서 이미 인증받은 사용자를 이용하여 웹 사이트를 공격하는 방법입니다.  사용자가 자신의 의지와는 무관하게 공격자가 
+의도한 행위(수정, 삭제, 등록 등)를 특정 웹사이트에 요청하게 하는 공격을 말한다.
+즉, 정상적인 사용자가 의도하지 않았지만, 자신도 모르게 서버를 공격하게 되는 경우입니다. 
+공격자가 만든 악성 페이지를 통해 사용자는 자신도 모르게 공격을 수행합니다.
 <br><br>
 
 * `for` 구문을 이용하여 Question 객체가 가지고 있는 데이터를 이용하여 radio button을 구현하고 있습니다.
