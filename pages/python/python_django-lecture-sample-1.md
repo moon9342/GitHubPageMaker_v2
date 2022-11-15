@@ -201,6 +201,19 @@ project가 정상적으로 생성되었는지 확인하기 위해 내장서버�
 Model을 생성하기 위해 bbs application 내의 `models.py` 파일에 다음과 같은 내용을
 입력합니다.
 
+참고로 Django는 Table에 Primary Key를 지정하지 않았을 경우 primary key를 자동으로 
+생성합니다. 자동으로 수행되는 `id` primary key 필드는 다음과 같이 생성됩니다.  
+
+> id = models.AutoField(primary_key=True)
+
+이렇게 생성된 id는 `auto-incrementing` primary key 필드입니다. 
+
+그런데 Django가 이렇게 자동으로 만들어 주는 것은 우리 모델에 `primary key`를 지정해주지 않았을 때입니다.
+만약 모델을 정의할때 custom primary key를 정의해주면 ( 해당 필드에 primary_key=True 를 명시 )
+Django는 자동으로 id 칼럼을 만들어주지 않습니다.
+
+> b_title = models.CharField(max_length=30, `primary_key=True`)
+
 ~~~python
 
 from django.db import models
@@ -265,6 +278,51 @@ Database에 실제로 적용해야 합니다.
 툴을 이용하면 쉽게 데이터베이스를 확인할 수 있습니다.
 `MySQL`같은 경우 MySQL에서 기본적으로 제공되는 `MySQL WorkBench`를 이용하거나
 [DATAGRIP](https://www.jetbrains.com/datagrip/){: target="_blank" }을 사용하면 됩니다.
+
+
+참고로 한번 migration이 진행된 후에 Database는 유지하고 기존에 만든 특정 `migration`을 취소하고 싶은 경우 다음과 같이
+진행하면 됩니다. (기존 migrate작업으로 Database에 생성된 Table을 삭제합니다.)
+
+* 마이그레이션 확인
+
+> `python manage.py makemigrations`
+
+위 명령을 통해 프로젝트에 추가로 반영할 마이그레이션이 있는지 확인합니다. 반영할 마이그레이션 파일이 없을 시
+`No changes detected`가 출력됩니다.
+
+* showmigrations
+
+> `python manage.py showmigrations`
+
+{% include image.html
+file='django-showmigrations.png'
+%}
+<br>
+
+* fake migrate & show migations
+  아래의 명령을 이용해 마이그레이션 기록을 삭제합니다.(`bbs`가 application 이름인 경우)
+
+> `python manage.py migrate --fake bbs zero`
+
+> `python manage.py showmigrations`
+
+{% include image.html
+file='django-showmigrations-fake.png'
+%}
+<br>
+
+* 마이그레이션 파일 삭제
+  Django application의 `migrations` 디렉토리의 `__init__.py` 모듈을 빼고 모두 삭제
+
+
+* make migrations
+  `bbs` application의 최초 마이그레이션 파일 `0001_inital.py`이 생성됩니다.
+
+* migrate
+  아래의 명령을 통해 초기 migrate 작업을 수행합니다.
+
+> `python manage.py migrate`
+
 
 ---
 
