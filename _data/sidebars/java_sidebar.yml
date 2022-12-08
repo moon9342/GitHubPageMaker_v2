@@ -39,11 +39,11 @@ entries:
       output: web, pdf
 
     - title: Java IO
-      url: /python_control-statement.html
+      url: /java_io.html
       output: web, pdf
 
     - title: Java Network
-      url: /python_function.html
+      url: /java_network.html
       output: web, pdf
 
     - title: JDBC
