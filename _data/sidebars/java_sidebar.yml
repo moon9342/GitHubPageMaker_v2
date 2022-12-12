@@ -26,9 +26,55 @@ entries:
       url: /python_environment.html
       output: web, pdf
 
-    - title: Java class 연습문제
-      url: /python_environment.html
-      output: web, pdf
+  - title: Java 연습문제
+    output: web, pdf
+    folderitems:
+
+      - title: Assignment
+        url: /java_introduction.html
+        output: web, pdf
+
+        subfolders:
+          - title: Daily Test
+            output: web, pdf
+            subfolderitems:
+
+              - title: Formatting pages
+                url: /tag_formatting.html
+                output: web
+
+              - title: Navigation pages
+                url: /tag_navigation.html
+                output: web
+
+              - title: Content types pages
+                url: /tag_content_types.html
+                output: web
+
+              - title: Publishing pages
+                url: /tag_publishing.html
+                output: web
+
+              - title: Special layout pages
+                url: /tag_special_layouts.html
+                output: web
+
+              - title: Collaboration pages
+                url: /tag_collaboration.html
+                output: web
+
+              - title: Troubleshooting pages
+                url: /tag_troubleshooting.html
+                output: web
+
+
+      - title: Test
+        url: /python_environment.html
+        output: web, pdf
+
+      - title: Workshop
+        url: /python_environment.html
+        output: web, pdf
 
   - title: Java 기본
     output: web, pdf
