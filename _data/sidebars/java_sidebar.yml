@@ -31,7 +31,7 @@ entries:
     folderitems:
 
       - title: Assignment
-        url: /java_introduction.html
+        url: /java_assignment.html
         output: web, pdf
 
         subfolders:
