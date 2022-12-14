@@ -34,46 +34,16 @@ entries:
         url: /java_assignment.html
         output: web, pdf
 
-        subfolders:
-          - title: Daily Test
-            output: web, pdf
-            subfolderitems:
-
-              - title: Formatting pages
-                url: /tag_formatting.html
-                output: web
-
-              - title: Navigation pages
-                url: /tag_navigation.html
-                output: web
-
-              - title: Content types pages
-                url: /tag_content_types.html
-                output: web
-
-              - title: Publishing pages
-                url: /tag_publishing.html
-                output: web
-
-              - title: Special layout pages
-                url: /tag_special_layouts.html
-                output: web
-
-              - title: Collaboration pages
-                url: /tag_collaboration.html
-                output: web
-
-              - title: Troubleshooting pages
-                url: /tag_troubleshooting.html
-                output: web
-
+      - title: Daily Test
+        url: /java_daily-test.html
+        output: web, pdf
 
       - title: Test
-        url: /python_environment.html
+        url: /java_final-test.html
         output: web, pdf
 
       - title: Workshop
-        url: /python_environment.html
+        url: /java_workshop.html
         output: web, pdf
 
   - title: Java 기본
