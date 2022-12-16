@@ -34,10 +34,6 @@ entries:
         url: /java_assignment.html
         output: web, pdf
 
-      - title: Daily Test
-        url: /java_daily-test.html
-        output: web, pdf
-
       - title: Test
         url: /java_final-test.html
         output: web, pdf
@@ -62,9 +58,42 @@ entries:
       url: /java_network.html
       output: web, pdf
 
-    - title: JDBC
-      url: /python_function.html
-      output: web, pdf
+#    - title: JDBC
+#      url: /python_function.html
+#      output: web, pdf
+
+      subfolders:
+        - title: JDBC
+          output: web
+          subfolderitems:
+
+            - title: JDBC 기본문법
+              url: /java_jdbc-basic.html
+              output: web
+
+            - title: JDBC 활용예제
+              url: /java_jdbc-book-manager.html
+              output: web
+
+            - title: Connection Pool
+              url: /java_jdbc-connection-pool.html
+              output: web
+
+            - title: MVC Pattern
+              url: /java_jdbc-mvc-pattern.html
+              output: web
+
+            - title: Dependency Injection
+              url: /java_jdbc-di.html
+              output: web
+
+            - title: JDBC Project
+              url: /java_jdbc_project.html
+              output: web
+
+            - title: Mybatis
+              url: /java_jdbc-mybatis.html
+              output: web
 
 
 # Copyright 2021 Google LLC
