@@ -15,11 +15,11 @@ entries:
       output: web, pdf
 
     - title: Data Type 
-      url: /python_environment.html
+      url: /java_data-type.html
       output: web, pdf
 
     - title: Java 객체지향
-      url: /python_environment.html
+      url: /java_object-oriented.html
       output: web, pdf
 
     - title: Java 주요 class
@@ -88,7 +88,7 @@ entries:
               output: web
 
             - title: JDBC Project
-              url: /java_jdbc_project.html
+              url: /java_jdbc-project.html
               output: web
 
             - title: Mybatis
