@@ -63,6 +63,27 @@ entries:
       url: /mysql_advanced-sql-part2.html
       output: web, pdf
 
+
+  - title: SQL 연습문제
+    output: web, pdf
+    folderitems:
+
+      - title: Exercise
+        url: /mysql_exercise.html
+        output: web, pdf
+
+      - title: Assignment
+        url: /mysql_assignment.html
+        output: web, pdf
+
+      - title: Test
+        url: /mysql_test.html
+        output: web, pdf
+
+      - title: Workshop
+        url: /mysql_workshop.html
+        output: web, pdf
+
   - title: MySQL Detail
     output: web, pdf
     folderitems:
