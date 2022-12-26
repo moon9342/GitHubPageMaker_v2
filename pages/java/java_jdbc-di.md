@@ -1008,6 +1008,245 @@ class와 interface를 통해 드러나는 의존관계 말고, `runtime`시에 o
 이렇게 구체적인 의존 object와 그것을 사용할 주체를 runtime시에 연결해 주는 작업을 우리는
 `DI`(의존관계 주입)라고 합니다. 
 
+## BookSearch 수정
+
+위에서 배운 내용을 기반으로 기존 `BookSearchMVC`를 수정해보도록 하죠. Transaction 단위로 connection을 사용해야 
+한다는 점에 유의하면 될 듯 합니다. 
+<br><br>
+
+완성된 프로젝트는 다음의 링크에서 받을 수 있습니다.
+
+* [BookSearchMVC_DI.zip](https://drive.google.com/file/d/18BBblh2L6kuhvqMMervnJNKXuby8Gk0z/view?usp=share_link){: target="_blank" }
+<br><br>
+
+기존 코드에서 변함이 없는 코드는 다음과 같습니다. 
+<br>
+
+* VO(Book.java)
+* View(BookSearchView.java)
+* Controller(BookDeleteByISBNController.java, BookSearchByKeywordController.java)
+<br><br>
+
+코드의 변화가 생기는 부분은 service, dao 부분이 될 것입니다. 
+
+### dao.DBCPConnectionPool
+
+~~~java 
+
+package booksearch.dao;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+public class DBCPConnectionPool {
+
+	private static BasicDataSource basicDS;
+
+	static {
+		try {
+			basicDS = new BasicDataSource();
+			basicDS.setDriverClassName("com.mysql.cj.jdbc.Driver");
+			basicDS.setUrl(
+					"jdbc:mysql://localhost:3306/library?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true");
+			basicDS.setUsername("root");
+			basicDS.setPassword("test1234");
+			// Parameters for connection pooling
+			basicDS.setInitialSize(10);
+			basicDS.setMaxTotal(10);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static DataSource getDataSource() {
+		return basicDS;
+	}
+
+}
+
+~~~
+
+### dao.BookDAO
+
+~~~java 
+
+package booksearch.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+import booksearch.vo.Book;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+public class BookDAO {
+
+	private Connection con;
+
+	public BookDAO() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public BookDAO(Connection con) {
+		super();
+		this.con = con;
+	}
+
+	public ObservableList<Book> select(String keyword) {
+		ObservableList<Book> books = FXCollections.observableArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+
+			String sql = "select bisbn, btitle, bauthor, bprice from book where btitle like ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + keyword + "%");
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				books.add(new Book(rs.getString("bisbn"), rs.getString("btitle"), rs.getString("bauthor"),
+						rs.getInt("bprice")));
+			}
+
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+
+		return books;
+	}
+
+	public int delete(String selectedISBN) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+
+			String sql = "delete from book where bisbn = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, selectedISBN);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+
+}
+
+~~~
+
+### service.BookService
+
+~~~java
+
+package booksearch.service;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import booksearch.dao.BookDAO;
+import booksearch.dao.DBCPConnectionPool;
+import booksearch.vo.Book;
+import javafx.collections.ObservableList;
+
+public class BookService {
+
+	public ObservableList<Book> searchBooksByKeyword(String keyword) {
+
+		ObservableList<Book> result = null;
+		Connection con = null;
+		try {
+			con = DBCPConnectionPool.getDataSource().getConnection();
+			// BookDAO를 이용한 데이터 추출
+			con.setAutoCommit(false);
+			BookDAO dao = new BookDAO(con);
+			result = dao.select(keyword);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// 결과 리턴
+		if (result != null) {
+			try {
+				con.commit();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				con.rollback();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+
+	public ObservableList<Book> deleteBooksByISBN(String selectedISBN, String searchKeyword) {
+
+		ObservableList<Book> result = null;
+		Connection con = null;
+
+		try {
+			con = DBCPConnectionPool.getDataSource().getConnection();
+			con.setAutoCommit(false);
+
+			BookDAO dao = new BookDAO(con);
+			int deleteResult = dao.delete(selectedISBN);
+			if (deleteResult == 1) {
+				result = dao.select(searchKeyword);
+				con.commit();
+			} else {
+				con.rollback();
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+}
+
+
+~~~
+
 End.
 
 {% include links.html %}

@@ -87,12 +87,12 @@ entries:
               url: /java_jdbc-di.html
               output: web
 
-            - title: JDBC Project
-              url: /java_jdbc-project.html
-              output: web
-
             - title: Mybatis
               url: /java_jdbc-mybatis.html
+              output: web
+
+            - title: JDBC Project
+              url: /java_jdbc-project.html
               output: web
 
 

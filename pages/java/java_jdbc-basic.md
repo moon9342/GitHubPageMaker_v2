@@ -96,11 +96,11 @@ public class Main {
 
 ## 테이블 생성
 
-제공된 Script file(`_BookTableDump.sql`)을 실행해 테이블을 생성합니다. 사용하는 데이터베이스는
+제공된 Script file(`(MySQL)도서검색용 Database Dump.sql`)을 실행해 테이블을 생성합니다. 사용하는 데이터베이스는
 `library` 입니다. 파일은 아래의 링크에서 받을 수 있습니다.
 <br><br>
 
-* [SQL Script file](https://drive.google.com/file/d/1zhibjEpn4dhB_W9ddqE-yfR3a0z7IaPo/view?usp=sharing){: target="_blank" }
+* [SQL Script file](https://drive.google.com/file/d/18US1yN7jr8nEJHKP3rY-wpQC2rWdgdnO/view?usp=share_link){: target="_blank" }
 <br>
 
 ---

@@ -181,12 +181,437 @@ Model과 View 사이를 이어주는 브릿지(Bridge) 역할을 수행합니다
 위에서 설명한 내용을 기반으로 우리의 BookSearch 프로그램을 MVC 구조로 구현해 보도록 하겠습니다. 추가적으로
 Database를 처리하는 `DAO` 역시 포함해서 구현해 보도록 하죠. 
 
+완성된 프로젝트는 다음의 링크에서 받을 수 있습니다. 
+
+* [BookSearchMVC.zip](https://drive.google.com/file/d/1ciBULHNmsxMNgwMK-2IjXBIeM-pIpQNJ/view?usp=share_link){: target="_blank" }
+
+### view.BookSearchView
+
 ~~~java
 
+package booksearch.view;
+
+import booksearch.controller.BookDeleteByISBNController;
+import booksearch.controller.BookSearchByKeywordController;
+import booksearch.vo.Book;
+import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class BookSearchView extends Application {
+	Scene scene;
+	TextField keywordField;
+	Button deleteBtn;
+	String selectedISBN;
+	String searchKeyword;
+
+	// 사용하는 VO BOOK은 public class이어야 한다. 그렇지 않으면 RuintimeException
+	TableView<Book> tableView;
+
+	public BookSearchView() {
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+
+		// BorderPane생성
+		BorderPane root = new BorderPane();
+		root.setPrefSize(700, 500);
+
+		FlowPane bottomFlowPane = new FlowPane();
+		bottomFlowPane.setPadding(new Insets(10, 10, 10, 10)); // padding(여백)설정
+		bottomFlowPane.setColumnHalignment(HPos.CENTER); // 정렬
+		bottomFlowPane.setPrefSize(700, 40);
+		bottomFlowPane.setHgap(10);
+
+		deleteBtn = new Button("선택한 책 삭제");
+		deleteBtn.setPrefSize(150, 40);
+		deleteBtn.setDisable(true);
+
+		deleteBtn.setOnAction(e -> {
+			BookDeleteByISBNController controller = new BookDeleteByISBNController();
+
+			ObservableList<Book> result = controller.getResult(selectedISBN, searchKeyword);
+
+			Dialog<String> dialog = new Dialog<String>();
+			dialog.setTitle("Dialog");
+			ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+
+			if (result != null) {
+				dialog.setContentText("정상적으로 삭제되었습니다.");
+				tableView.setItems(result);
+				deleteBtn.setDisable(true);
+			} else {
+				dialog.setContentText("삭제에 실패했습니다.");
+				deleteBtn.setDisable(true);
+			}
+			dialog.getDialogPane().getButtonTypes().add(type);
+			dialog.showAndWait();
+
+		});
+
+		keywordField = new TextField();
+		keywordField.setPrefSize(250, 40);
+		keywordField.setOnAction(e -> {
+
+			BookSearchByKeywordController controller = new BookSearchByKeywordController();
+
+			ObservableList<Book> books = controller.getResult(keywordField.getText());
+
+			tableView.setItems(books);
+			searchKeyword = keywordField.getText();
+			keywordField.clear();
+
+		});
+
+		// 컬럼 객체를 생성합니다.
+
+		// 책 ISBN
+		TableColumn<Book, String> isbnColumn = new TableColumn<>("ISBN");
+		isbnColumn.setMinWidth(150);
+		isbnColumn.setCellValueFactory(new PropertyValueFactory<>("bisbn"));
+
+		// 책제목
+		TableColumn<Book, String> titleColumn = new TableColumn<>("Title");
+		titleColumn.setMinWidth(150);
+		titleColumn.setCellValueFactory(new PropertyValueFactory<>("btitle"));
+
+		// 책저자
+		TableColumn<Book, String> authorColumn = new TableColumn<>("Author");
+		authorColumn.setMinWidth(100);
+		authorColumn.setCellValueFactory(new PropertyValueFactory<>("bauthor"));
+
+		// 책가격
+		TableColumn<Book, Integer> priceColumn = new TableColumn<>("Price");
+		priceColumn.setMinWidth(100);
+		priceColumn.setCellValueFactory(new PropertyValueFactory<>("bprice"));
+
+		tableView = new TableView<Book>();
+		tableView.getColumns().addAll(isbnColumn, titleColumn, authorColumn, priceColumn);
+
+		tableView.setRowFactory(e -> {
+			TableRow<Book> row = new TableRow<>();
+			row.setOnMouseClicked(event -> {
+				if (event.getClickCount() == 1 && (!row.isEmpty())) {
+					Book book = row.getItem();
+					selectedISBN = book.getBisbn();
+					deleteBtn.setDisable(false);
+				}
+			});
+			return row;
+		});
+
+		bottomFlowPane.getChildren().add(keywordField);
+		bottomFlowPane.getChildren().add(deleteBtn);
+
+		root.setCenter(tableView);
+		root.setBottom(bottomFlowPane);
+
+		Scene scene = new Scene(root);
+
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("BookSearch MVC");
+
+		primaryStage.show();
+	}
+
+	public static void main(String[] args) {
+		launch();
+	}
+
+}
+
+~~~
+
+### vo.Book
+
+~~~java
+
+package booksearch.vo;
+
+public class Book {
+
+	public Book() {
+
+	}
+
+	public Book(String bisbn, String btitle, String bauthor, int bprice) {
+		super();
+		this.bisbn = bisbn;
+		this.btitle = btitle;
+		this.bauthor = bauthor;
+		this.bprice = bprice;
+	}
+
+	private String bisbn;
+	private String btitle;
+	private String bauthor;
+	private int bprice;
+
+	public String getBisbn() {
+		return bisbn;
+	}
+
+	public void setBisbn(String bisbn) {
+		this.bisbn = bisbn;
+	}
+
+	public String getBtitle() {
+		return btitle;
+	}
+
+	public void setBtitle(String btitle) {
+		this.btitle = btitle;
+	}
+
+	public String getBauthor() {
+		return bauthor;
+	}
+
+	public void setBauthor(String bauthor) {
+		this.bauthor = bauthor;
+	}
+
+	public int getBprice() {
+		return bprice;
+	}
+
+	public void setBprice(int bprice) {
+		this.bprice = bprice;
+	}
+
+}
 
 
 ~~~
 
+### controller.BookSearchByKeywordController
+
+~~~java
+
+package booksearch.controller;
+
+import booksearch.service.BookService;
+import booksearch.vo.Book;
+import javafx.collections.ObservableList;
+
+public class BookSearchByKeywordController {
+	
+public ObservableList<Book> getResult(String keyword) {
+		
+		BookService service = new BookService();
+		ObservableList<Book> result = 
+				service.searchBooksByKeyword(keyword);
+		
+		return result;
+	}
+
+}
+
+
+~~~
+
+### controller.BookDeleteByISBNController
+
+~~~java 
+
+package booksearch.controller;
+
+import booksearch.service.BookService;
+import booksearch.vo.Book;
+import javafx.collections.ObservableList;
+
+public class BookDeleteByISBNController {
+
+	public BookDeleteByISBNController() {
+	}
+
+	public ObservableList<Book> getResult(String selectedISBN, String searchKeyword) {
+		
+		BookService service = new BookService();
+		ObservableList<Book> result = 
+				service.deleteBooksByISBN(selectedISBN, searchKeyword);
+		
+		return result;
+	}
+}
+
+
+~~~
+
+### service.BookService
+
+~~~java
+
+package booksearch.service;
+
+import booksearch.dao.BookDAO;
+import booksearch.vo.Book;
+import javafx.collections.ObservableList;
+
+public class BookService {
+
+	public ObservableList<Book> searchBooksByKeyword(String keyword) {
+		
+		// BookDAO를 이용한 데이터 추출
+		BookDAO dao = new BookDAO();
+		ObservableList<Book> result = dao.select(keyword);
+		
+		// 결과 리턴
+		return result;
+	}
+
+	public ObservableList<Book> deleteBooksByISBN(String selectedISBN, String searchKeyword) {
+
+		ObservableList<Book> result = null;
+		
+		BookDAO dao = new BookDAO();
+		int deleteResult = dao.delete(selectedISBN);
+		
+		if(deleteResult == 1) {
+			result = dao.select(searchKeyword);
+		}
+		
+		return result;
+	}
+}
+
+
+~~~
+
+### dao.BookDAO
+
+~~~java
+
+package booksearch.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+import booksearch.vo.Book;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+public class BookDAO {
+
+	private static BasicDataSource basicDS;
+
+	static {
+		try {
+			basicDS = new BasicDataSource();
+			basicDS.setDriverClassName("com.mysql.cj.jdbc.Driver");
+			basicDS.setUrl(
+					"jdbc:mysql://localhost:3306/library?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true");
+			basicDS.setUsername("root");
+			basicDS.setPassword("test1234");
+			// Parameters for connection pooling
+			basicDS.setInitialSize(10);
+			basicDS.setMaxTotal(10);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static DataSource getDataSource() {
+		return basicDS;
+	}
+
+	public ObservableList<Book> select(String keyword) {
+		ObservableList<Book> books = FXCollections.observableArrayList();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			DataSource ds = getDataSource();
+			con = ds.getConnection();
+
+			String sql = "select bisbn, btitle, bauthor, bprice from book where btitle like ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + keyword + "%");
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				books.add(new Book(rs.getString("bisbn"), rs.getString("btitle"), rs.getString("bauthor"),
+						rs.getInt("bprice")));
+			}
+
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				con.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+
+		return books;
+	}
+
+	public int delete(String selectedISBN) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			DataSource ds = getDataSource();
+			con = ds.getConnection();
+
+			String sql = "delete from book where bisbn = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, selectedISBN);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+
+}
+
+
+~~~
 
 End.
 
