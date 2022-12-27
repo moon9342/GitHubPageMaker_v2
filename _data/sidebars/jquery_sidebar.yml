@@ -1,0 +1,27 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: jQuery
+  version:
+  folders:
+
+  - title: HTML 기초
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /java_introduction.html
+      output: web, pdf
+
+
+  - title: jQuery
+    output: web, pdf
+    folderitems:
+
+      - title: jQuery 기본
+        url: /java_assignment.html
+        output: web, pdf
+
+
+# Copyright 2021 Google LLC
