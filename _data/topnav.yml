@@ -18,8 +18,8 @@ topnav_dropdowns:
       folderitems:
         - title: ECMAScript 2015(ES6)
           url: /ecmascript_introduction.html
-        - title: jQuery
-          url: /jquery_introduction.html
+        - title: HTML & jQuery
+          url: /html_introduction.html
         - title: React
           external_url: http://jekyllrb.com/docs/home/
         - title: Angular

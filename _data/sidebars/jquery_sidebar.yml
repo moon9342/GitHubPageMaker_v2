@@ -11,7 +11,7 @@ entries:
     folderitems:
 
     - title: Introduction
-      url: /java_introduction.html
+      url: /html_introduction.html
       output: web, pdf
 
 
@@ -20,7 +20,7 @@ entries:
     folderitems:
 
       - title: jQuery 기본
-        url: /java_assignment.html
+        url: /jquery_introduction.html
         output: web, pdf
 
 
