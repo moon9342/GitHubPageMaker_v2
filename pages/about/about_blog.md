@@ -18,8 +18,10 @@ folder: about
 많았는데 여러 시행착오를 거쳐 최종적으로는 [GitHub](https://github.com/){: target='_blank' }에
 정착하고 [GitHub Page](http://moon9342.github.io/){: target='_blank' }에서 블로그를 다시 운영하는 걸로 결정했습니다.
 <br><br>
-블로그는 Text형태로 내용을 정리하고 유튜브에서 동영상을 올릴 예정입니다.
-<br> 
+블로그는 Text형태로 내용을 정리하고 유튜브에서 동영상을 올릴 예정입니다. 블로그에서 사용한 `Jekyll Theme`의 링크는 다음과 같습니다.
+<br><br>
+[Documentation Theme for Jekyll](http://jekyllthemes.org/themes/documentation-theme-jekyll/){: target='_blank' } 
+<br><br> 
 아래에 링크된 제 유튜브 채널에 들어가시면 블로그에 있는 내용에 대한 동영상들을 보실 수 있습니다.
 <br><br>
 [얼큰우동TV, 쉽게배우는 IT](https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ){: target='_blank' }
