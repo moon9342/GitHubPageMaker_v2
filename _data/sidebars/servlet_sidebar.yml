@@ -1,0 +1,30 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Servlet
+  version:
+  folders:
+
+  - title: Java Servlet
+    output: web, pdf
+    folderitems:
+
+    - title: Servlet Introduction
+      url: /servlet_introduction.html
+      output: web, pdf
+
+    - title: Servlet 기본
+      url: /servlet_basic.html
+      output: web, pdf
+
+    - title: JSP
+      url: /servlet_jsp.html
+      output: web, pdf
+
+    - title: MVC Pattern
+      url: /servlet_mvc.html
+      output: web, pdf
+
+
+# Copyright 2021 Google LLC
