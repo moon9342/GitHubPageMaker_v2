@@ -46,6 +46,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Java Module
+      url: /java_module.html
+      output: web, pdf
+
     - title: Java Thread
       url: /java_thread.html
       output: web, pdf
