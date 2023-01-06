@@ -2,18 +2,26 @@
 
 entries:
 - title: sidebar
-  product: Spring Framework
+  product: Maven
   version:
   folders:
 
-  - title: Spring Framework
+  - title: Maven 기초
     output: web, pdf
     folderitems:
 
-    - title: Spring Introduction
-      url: /spring_introduction.html
+    - title: Introduction
+      url: /maven_introduction.html
       output: web, pdf
 
+  - title: Maven 활용
+    output: web, pdf
+    folderitems:
+
+
+    - title: Workshop
+      url: /java_workshop.html
+      output: web, pdf
 
 
 

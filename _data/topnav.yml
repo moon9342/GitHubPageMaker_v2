@@ -33,6 +33,8 @@ topnav_dropdowns:
       folderitems:
         - title: Java
           url: /java_introduction.html
+        - title: Maven
+          url: /maven_introduction.html
         - title: Java Servlet
           url: /servlet_introduction.html
         - title: Spring Framework

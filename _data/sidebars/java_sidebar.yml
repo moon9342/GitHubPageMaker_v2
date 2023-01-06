@@ -58,6 +58,10 @@ entries:
       url: /java_io.html
       output: web, pdf
 
+    - title: JavaFX
+      url: /java_fx.html
+      output: web, pdf
+
     - title: Java Network
       url: /java_network.html
       output: web, pdf
@@ -91,12 +95,12 @@ entries:
               url: /java_jdbc-di.html
               output: web
 
-            - title: Mybatis
-              url: /java_jdbc-mybatis.html
-              output: web
-
             - title: JDBC Project
               url: /java_jdbc-project.html
+              output: web
+
+            - title: Mybatis
+              url: /java_jdbc-mybatis.html
               output: web
 
 
