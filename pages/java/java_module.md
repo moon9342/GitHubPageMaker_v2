@@ -208,39 +208,37 @@ java --list-modules
 
 ## 모듈 선언
 
-모듈을 설정하려면 `module-info.java`라는 모듈 설명자 파일을 패키지 루트 레벨에 생성해야 합니다.
+모듈을 설정하려면 `module-info.java`라는 모듈 설명자 파일을 `패키지 루트 레벨`에 생성해야 합니다.
 이 파일에는 모듈을 생성하는데 필요한 모든 데이터가 들어있습니다. 어떤 설정값도 없는 빈 모듈 설명자 파일을 만들어보죠.
 <br><br>
 
-Eclipse에서 새로운 project를 생성할 때 프로젝트명을 `계산기모듈`로 지정하고 
+Eclipse에서 새로운 project를 생성할 때 프로젝트명을 `MyUtilityModule`로 지정하고 
 대화창 하단에 module 항목에 있는 `module-info.java` 파일을 생성한다고
-체크를 한 후 모듈 이름을 `my.firstmodule`로 지정해서 프로젝트를 생성합니다.
+체크를 한 후 모듈 이름을 `my.util`로 지정해서 프로젝트를 생성합니다.
 <br><br>
 
 처음 project 생성 시 `module-info.java`를 생성하지 않아도 추후에 프로젝트에서 오른쪽 클릭해서 
 `Configure > Create module-info.java`를 선택해도 모듈을 생성할 수 있습니다. 
 <br><br>
 
-프로젝트가 생성된 후 `src` 폴더의 이름을 `mt.firstmodule`로 변경합니다. 이 폴더안에는 `module-info.java` 파일이 위치해야 합니다.
-(이 폴더가 module root folder가 됩니다.)
+프로젝트가 생성된 후 `src` 폴더의 하단에 `my.util` package를 생성한 후 이 폴더안에 `module-info.java` 파일을 
+위치시킵니다. (이 폴더가 `module root folder`가 됩니다.)
 <br><br>
 
-그런다음 `com.test.calc` package를 생성한 후 `Calculator` class를 작성합니다. 
+그런다음 `my.util.calc` package를 생성한 후 `Calculator` class를 작성합니다. 
 
 ~~~java
 
-package com.test.calc;
+package my.util.calc;
 
 public class Calculator {
-	
+
 	public Calculator() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public int sum(int a, int b) {
-		
 		return a + b;
-		
 	}
 }
 
@@ -253,7 +251,7 @@ public class Calculator {
  
 ~~~java
 
-module my.firstmodule {
+module my.util {
 
     // 설정값들은 모두 optional입니다.
     
@@ -268,42 +266,122 @@ module my.firstmodule {
 
 ~~~txt
 
-javac -d target/classes 
-      my.firstmodule/module-info.java 
-      my.firstmodule/com/test/calc/Calculator.java 
+javac -d mods 
+      --module-path ./mods/ 
+      ./src/my/util/calc/Calculator.java 
+      ./src/my/util/module-info.java
 
 ~~~
 
-이제 jar 명령을 이용하여 jar 파일로 압축합니다.
+working directory를 `mods` 폴더로 이동한 다음 jar 명령을 이용하여 jar 파일로 압축합니다.
 
 ~~~txt
 
 jar --create 
-    --file target/my-module.jar 
-    target/classes/module-info.class 
-    target/classes/com/test/calc/*.class
+    --file my-module.jar 
+    module-info.class 
+    my/util/calc/*.class
 
 ~~~
 
-이렇게 생성된 module jar파일을 이용해 보도록 하죠.
+이렇게 생성된 module jar파일을 이용해 보도록 하죠. 일단 이 jar 파일을 바탕화면같으로 이동시킵니다.
 <br><br>
 
-다시 새로운 Project를 생성합니다. 
+이제 모듈을 사용할 새로운 Project를 생성합니다. 프로젝트의 이름은 `계산기사용` 이라고 설정합니다. 역시 모듈화를
+시켜야 하기 때문에 `module-info.java`를 생성해야 하며 모듈명은 `com.test`라고 설정합니다. 
+<br><br>
 
-### Requires
+프로젝트의 `properties > Java Build Path > Libraries > Modulepath`를 선택하고 `Add External JARs`를
+클릭해 바탕화면으로 이동시킨 우리 모듈 jar 파일을 포함시킵니다.
+<br><br>
 
-첫 번째 키워드는 `requires`입니다. 이 키워드는 이 모듈의 종속성을 나타냅니다.
+이제 소스코드를 작성합니다. `com.test` 패키지안에 `module-info.java` 파일을 위치시키고 `Main.java` 파일을 하나
+생성합니다. 
 
 ~~~java
 
-module my.module {
-    requires module.name;
+package com.test;
+
+import my.util.calc.Calculator;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Calculator cal = new Calculator();
+		System.out.println(cal.sum(10,20));
+	}
 }
 
 ~~~
 
-이제 'my.module'은 'module.name'에 대한 종속성을 갖게 된다(런타임, 컴파일 타임 둘 다). 이제 'my.module'는 'module.name'에서 외부로 공개(exports)하기로 한 모든 public type들에 대한 접근이 가능하다.
+위의 코드를 작성하면 import 부분에 `not accessible`이라는 오류가 발생하는걸 확인하실 수 있습니다. 이 상태로는
+사용할수가 없다는 말입니다. 클래스가 존재하기는 하지만 우리 모듈에서 사용할 수 없다는 의미입니다. 
+<br><br>
 
+모듈안의 클래스를 사용하기 위해서는 추가적인 작업을 수행해야 합니다. 
+<br><br>
+
+### Exports
+
+디폴트로 모듈은 자신의 API를 다른 모듈에 노출시키지 않습니다.
+<br><br>
+
+이러한 강력한 캡슐화가 모듈 시스템이 만들어진 주요 동기 중 하나입니다.
+API가 사용될 수 있게 하려면 명시적으로 공개 범위를 나타내야 합니다. 모듈 내의 모든 public 멤버들을 외부로 노출시키기 위해
+`exports` 키워드를 사용합니다.
+
+다음의 내용을 `MyUtilityModule` project의 `my.util` 모듈의 `module-info.java` 파일안에 작성하고 다시 컴파일과정과
+jar 압축과정을 거쳐서 사용해야 합니다.
+
+~~~java
+
+module my.util {
+	exports my.util.calc;
+}
+
+~~~
+
+### Requires
+
+두번째는 `requires`입니다.  이 키워드는 이 모듈의 종속성을 나타내는 키워드로 아래와 같이 작성하면
+`com.test` module은 'my.util'에 대한 종속성을 가지게 됩니다.
+<br><br>
+
+아래의 내용을 `계산기사용` project의 `com.test` module의 `module-info.java` 파일안에 작성해야 
+코드에러가 발생하지 않고 정상적으로 module안의 package를 사용할 수 있습니다.
+
+~~~java
+
+module com.test {
+	requires my.util;
+}
+
+~~~
+
+---
+
+## 샘플 프로그램
+
+위에서 언급한 예제 프로젝트 2개에 대한 다운로드 링크입니다.
+
+* [Java Module Example](https://drive.google.com/file/d/12w_t-DaX6M9Rxt21UB-kwmZzfT3QFgGT/view?usp=share_link){: target="_blank" }
+<br><br>
+
+---
+
+## JavaFX 모듈 사용
+
+앞서 JavaFX 역시 module화되서 제공된다고 언급했었습니다. 일반적인 Java project에서 JavaFX를 사용하기 위해서는 Module Path부분에
+JavaFX module을 등록한 후 `VM args`에 다음의 내용을 붙여넣어서 실행했었습니다. 
+
+~~~txt
+
+--module-path "C:\Program Files\Java\jdk-11.0.17\javafx-sdk-11\lib" --add-modules javafx.controls,javafx.fxml
+
+~~~
+
+이제 이 내용을 이해할 수 있을 듯 합니다. 
+<br><br>
 
 End.
 
