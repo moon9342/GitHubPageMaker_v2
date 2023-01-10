@@ -238,8 +238,110 @@ java -cp target\myProject-1.0-SNAPSHOT.jar com.test.App
 
 ## Build LifeCycle과  Phase
 
+Maven은 수행단계라는게 있습니다. 이런 수행단계는 여러 단계가 있고 또 순서도 가지고 있습니다. 
+<br><br>
 
+{% include image.html
+file='maven-phase.png'
+%}
+<br>
 
+위의 그림에서 보듯이 상당히 많은 단계가 존재합니다. 파란색으로 되어 있는 것들이 주요 단계입니다.
+그럼 이런 단계를 일일이 다 실행해야 되는걸까요?
+<br><br>
+
+그렇지 않습니다. 만약  `compile`이라는 단계를 실행하면 앞의 단계가 모두 실행되고 `compile`단계까지 실행되는 것이죠.
+<br><br>
+
+한가지 주의해야 할 것은 우리 프로젝트가 어떤 종류인가에 따라서 그 단계가 살짝 상이하다는 것입니다. 하지만 거의 대부분은
+비슷합니다.
+<br><br>
+
+이런 단계들의 구성은 어디서 할까요? 바로 `pom.xml`에서 설정합니다. POM은 `Project Object Model`의 약자입니다. 
+우리 프로젝트의 구성요소를 하나의 모델로 가지고 있는 파일이라고 생각하시면 됩니다. 
+<br><br>
+
+또 한가지 기억할 점은 각각의 단계들이 플러그인 형태로 구성되어 있기 때문에 각각의 단계가 무조건 적으로 실행되지 
+않는다는 것입니다. 아래 그림은 Java 프로젝트를 빌드할 때 사용하는 단계입니다. 
+
+{% include image.html
+file='maven-jar-phase.png'
+%}
+<br>
+
+파란색으로 되어있는 단계에 대해 플러그인들이 묘사되어 있고 각 단계의 세부 플러그인 역할을 하는 `Goal`도 표현해 놓았습니다. 하얀색으로 되어있는 단계는
+플러그인이 설치되어 있지 않는 것들이죠.
+<br><br>
+
+이런 플로그인들을 다시 설정하거나 플러그인들이 설정되지 않은 것들을 설정하려면 어떻게 해야 할까요? 당연히 `pom.xml` 파일에서
+설정하면 됩니다.
+<br><br>
+
+다음의 명령어를 이용하면 이런 단계와 설치되어 있는 플러그인들을 확인할 수 있습니다.
+
+~~~text
+
+mvn help:describe -Dcmd=compile
+
+~~~
+
+다음과 같은 결과를 볼 수 있습니다. 
+
+~~~text
+
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -------------------------< com.test:myProject >-------------------------
+[INFO] Building myProject 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-help-plugin:3.3.0:describe (default-cli) @ myProject ---
+[INFO] 'compile' is a phase corresponding to this plugin:
+org.apache.maven.plugins:maven-compiler-plugin:3.1:compile
+
+It is a part of the lifecycle for the POM packaging 'jar'. This lifecycle includes the following phases:
+* validate: Not defined
+* initialize: Not defined
+* generate-sources: Not defined
+* process-sources: Not defined
+* generate-resources: Not defined
+* process-resources: org.apache.maven.plugins:maven-resources-plugin:2.6:resources
+* compile: org.apache.maven.plugins:maven-compiler-plugin:3.1:compile
+* process-classes: Not defined
+* generate-test-sources: Not defined
+* process-test-sources: Not defined
+* generate-test-resources: Not defined
+* process-test-resources: org.apache.maven.plugins:maven-resources-plugin:2.6:testResources
+* test-compile: org.apache.maven.plugins:maven-compiler-plugin:3.1:testCompile
+* process-test-classes: Not defined
+* test: org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test
+* prepare-package: Not defined
+* package: org.apache.maven.plugins:maven-jar-plugin:2.4:jar
+* pre-integration-test: Not defined
+* integration-test: Not defined
+* post-integration-test: Not defined
+* verify: Not defined
+* install: org.apache.maven.plugins:maven-install-plugin:2.4:install
+* deploy: org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.465 s
+[INFO] Finished at: 2023-01-10T23:32:09+09:00
+[INFO] ------------------------------------------------------------------------
+
+~~~
+
+위의 결과를 보면 `validate`단계는 플러그인이 설치되지 않았음을 확인할 수 있습니다. 그리고 몇몇개는 플러그인이 설치되어 있는걸
+확인할 수 있습니다. 이런 플러그인들은 maven이 제공해주는것들도 있고 다른곳에서 제공하는 것들도 있습니다.
+<br><br>
+
+Maven이 제공하는 플러그인을 살펴보려면 다음의 링크를 이용하시면 됩니다. 
+<br><br>
+
+https://maven.apache.org/plugins/index.html
+<br><br>
 
 
 End.
