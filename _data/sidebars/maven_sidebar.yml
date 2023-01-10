@@ -14,14 +14,12 @@ entries:
       url: /maven_introduction.html
       output: web, pdf
 
-  - title: Maven 활용
-    output: web, pdf
-    folderitems:
-
-
-    - title: Workshop
-      url: /java_workshop.html
+    - title: Eclipse와 통합
+      url: /maven_eclipse.html
       output: web, pdf
+
+
+
 
 
 
