@@ -811,13 +811,6 @@ public class Main {
 * [MyBatis Example Project](https://drive.google.com/file/d/1Cp138SINtAiC8-XRTH5cmgJJv6jC3gUj/view?usp=share_link){: target="_blank" }
 <br><br>
 
----
-
-## BookSearch(MyBatis)
-
-자 이제 `MyBatis`에 대한 기본적인 사용법을 알았으니 
-작성한 프로젝트를 MyBatis를 이용한 코드로 변환해 보도록 하죠. 
-
 
 End.
 

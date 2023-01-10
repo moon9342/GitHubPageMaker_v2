@@ -103,5 +103,8 @@ entries:
               url: /java_jdbc-mybatis.html
               output: web
 
+            - title: BookSearch(MyBatis)
+              url: /java_jdbc-booksearch-mybatis.html
+              output: web
 
 # Copyright 2021 Google LLC
