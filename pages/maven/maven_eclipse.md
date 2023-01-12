@@ -132,7 +132,31 @@ compile이라는 플러그인에 대해 우리가 살펴볼 수 있는데 Goal�
 
 ## 웹 프로젝트로 변경
 
+이번에는 Maven의 기능을 살펴보기 위해 기존 Java Project를 웹 프로젝트로 변경시키는 작업을 해 보도록 하겠습니다.
+<br><br>
 
+기존에 만들었던 Java Project를 바꿀려면 여러 설정을 바꿔야 합니다. 그런데 Maven을 이용하면 이런 변환이 상당히 쉬워집니다.
+<br><br>
+
+우리가 가지고 있는 pom.xml 파일에 있는 packaging 정보를 기존의 jar에서 war로 변경한 후 저장한 후 Maven Project를
+update합니다. 그러면 기존에 없었던 webapp라는 폴더가 생성되는걸 보실 수 있습니다. 
+<br><br>
+
+아시다시피 webapp폴더는 웹 개발할 때 home directory의 역할을 수행하는 폴더입니다. 그런데 pom.xml을 보면 다음과 같은 
+오류가 있는걸 확인할 수 있습니다. 
+
+~~~text 
+
+web.xml is missing and <failOnMissingWebXml> is set to true
+
+~~~
+
+`web.xml` 파일이 존재하지 않는다는 것이죠. 우리의 webapp 폴더 하단에 `WEB-INF` 폴더를 생성하고 Tomcat이 설치된 폴더에서
+`webapps > ROOT > WEB-INF > web.xml` 파일을 찾아 해당 파일을 우리 `WEB-INF` 폴더에 복사하면 오류가 사라집니다.
+<br><br>
+
+이렇게 하면 우리의 웹 프로젝트를 만들 수 있습니다. 간단하게 HTML 파일을 추가한 후 서버를 기동해서 정상적으로 동작하는지
+확인해보면 됩니다.
 
 End.
 
